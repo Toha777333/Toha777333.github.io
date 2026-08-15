@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Иванов | Unity & Golang Engineer</title>
+    <style>
+        /* --- CSS ПЕРЕМЕННЫЕ И СБРОС СТИЛЕЙ --- */
+        :root {
+            /* Цветовая палитра (Dark IDE theme) */
+            --bg-color: #1e1e1e;       /* Основной фон (VS Code like) */
+            --bg-accent: #252526;      /* Фон карточек/навигации */
+            --text-main: #d4d4d4;      /* Основной текст */
+            --text-muted: #808080;     /* Второстепенный текст */
+            --accent: #007acc;         /* Акцентный синий (Unity/Go) */
+            --accent-hover: #4fc3f7;   /* Светло-синий при наведении */
+            --code-color: #ce9178;     /* Цвет для строчек кода/строк */
+            
+            /* Размеры и отступы */
+            --container-width: 1100px;
+            --gap-lg: 40px;
+            --gap-md: 20px;
+            --gap-sm: 10px;
+            --radius: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- ОБЩИЕ КЛАССЫ --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--gap-md);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: var(--gap-lg);
+            color: var(--text-main);
+        }
+
+        .section-title span {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--bg-color);
+            color: var(--accent-hover);
+            padding: 4px 10px;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* --- ШАПКА И НАВИГАЦИЯ --- */
+        header {
+            background-color: var(--bg-accent);
+            padding: var(--gap-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .logo-slash { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: var(--gap-md);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO СЕКЦИЯ --- */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, #252526 0%, #1e1e1e 70%);
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: var(--gap-md);
+        }
+
+        .hero-title span.slash { color: var(--accent); }
+
+        .hero-stack {
+            margin-top: var(--gap-md);
+            margin-bottom: var(--gap-lg);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--gap-sm);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: var(--gap-md);
+        }
+
+        /* --- СЕКЦИЯ ГИБРИДНЫХ ПРОЕКТОВ --- */
+        .projects { padding: 80px 0; }
+
+        .project-card {
+            background-color: var(--bg-accent);
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: var(--gap-lg);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .project-visual {
+            flex: 1;
+            background-color: #000; /* Фон для видео/гиф */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            color: var(--text-muted);
+        }
+        
+        /* Заглушка вместо медиа (удалить при добавлении img/video) */
+        .visual-placeholder {
+            font-size: 1rem;
+            font-family: monospace;
+        }
+
+        .project-info {
+            flex: 1.5;
+            padding: var(--gap-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .project-name { font-size: 1.5rem; font-weight: 700; }
+
+        .project-type-icon { color: var(--accent); font-weight: bold; }
+
+        .project-description {
+            color: var(--text-main);
+            margin-bottom: var(--gap-md);
+        }
+
+        .project-spec {
+            margin-bottom: var(--gap-sm);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-spec strong { color: var(--text-main); }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap-sm);
+            margin-bottom: var(--gap-md);
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--gap-sm);
+        }
+
+        .project-links .btn { padding: 6px 12px; font-size: 0.85rem; }
+
+        /* --- СЕКЦИЯ СПЕЦИАЛИЗАЦИЙ (DEEP DIVES) --- */
+        .deep-dives {
+            padding: 80px 0;
+            background-color: var(--bg-accent);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .dive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-lg);
+        }
+
+        .dive-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--gap-md);
+            color: var(--accent-hover);
+        }
+
+        .dive-card {
+            background-color: var(--bg-color);
+            padding: var(--gap-md);
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            margin-bottom: var(--gap-md);
+        }
+
+        .dive-card h4 { margin-bottom: 5px; }
+
+        .dive-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: var(--gap-sm);
+        }
+
+        /* --- СЕКЦИЯ НАВЫКОВ (SKILLS) --- */
+        .skills { padding: 80px 0; }
+
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--gap-md);
+        }
+
+        .skill-category {
+            background-color: var(--bg-accent);
+            padding: var(--gap-md);
+            border-radius: var(--radius);
+            border: 1px solid #333;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--gap-md);
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* --- СЕКЦИЯ КОНТАКТОВ (CONTACT) --- */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .contact-text {
+            color: var(--text-muted);
+            margin-bottom: var(--gap-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--gap-md);
+        }
+
+        .contact-btn {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+        }
+
+        /* --- ПОДВАЛ (FOOTER) --- */
+        footer {
+            background-color: var(--bg-accent);
+            padding: var(--gap-md) 0;
+            text-align: center;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- АДАПТИВНАЯ ВЕРСТКА (RESPONSIVE) --- */
+        
+        /* Планшеты и небольшие десктопы (до 992px) */
+        @media (max-width: 992px) {
+            .hero-name { font-size: 2.8rem; }
+            .dive-grid { grid-template-columns: 1fr; gap: var(--gap-md); }
+        }
+
+        /* Мобильные устройства (до 768px) */
+        @media (max-width: 768px) {
+            :root { --gap-lg: 30px; }
+            
+            header { position: relative; }
+            .nav-links { display: none; } /* Простое скрытие меню на мобильных */
+
+            .hero { padding: 60px 0; }
+            .hero-name { font-size: 2.2rem; }
+            .hero-title { font-size: 1.2rem; }
+            .hero-btns { flex-direction: column; gap: var(--gap-sm); align-items: center;}
+
+            .section-title { font-size: 1.6rem; }
+
+            .project-card { flex-direction: column; }
+            .project-visual { min-height: 200px; }
+            .project-info { flex: auto; }
+            .project-name { font-size: 1.3rem; }
+            .project-links { flex-wrap: wrap; justify-content: center; }
+
+            .dive-column h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">ivan<span class="logo-slash">/</span>></a>
+            <ul class="nav-links">
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <a href="resume.pdf" class="btn btn-outline" download>Скачать CV</a>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-name">Иван Иванов</h1>
+            <p class="hero-title">Unity <span class="slash">&</span> Golang Backend Engineer</p>
+            
+            <div class="hero-stack">
+                <span class="tag">Unity 3D/2D</span>
+                <span class="tag">C#</span>
+                <span class="tag">Golang</span>
+                <span class="tag">gRPC</span>
+                <span class="tag">WebSockets</span>
+                <span class="tag">Docker</span>
+                <span class="tag">PostgreSQL</span>
+            </div>
+
+            <div class="hero-btns">
+                <a href="#projects" class="btn">Посмотреть проекты</a>
+                <a href="#contact" class="btn btn-outline">Связаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГИБРИДНЫЕ ПРОЕКТЫ -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title"><span>Гибридные проекты</span></h2>
+
+            <!-- Пример карточки проекта #1 -->
+            <div class="project-card">
+                <div class="project-visual">
+                    <!-- Замените div ниже на тег img или video -->
+                    <!-- <img src="img/project1-gameplay.webp" alt="Project 1 Gameplay"> -->
+                    <div class="visual-placeholder">[ <span style="color:var(--accent);">GIF/Видео Геймплея</span> ]</div>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-header">
+                            <h3 class="project-name">CyberArena Online</h3>
+                            <span class="project-type-icon">{ <span style="color:var(--code-color)">Hybrid</span> }</span>
+                        </div>
+                        <p class="project-description">Многопользовательский сессионный шутер в сеттинге киберпанка.</p>
+                        
+                        <p class="project-spec"><strong>Клиент (Unity):</strong> Архитектура на Zenject, синхронизация движений через WebSockets, URP графика.</p>
+                        <p class="project-spec"><strong>Сервер (Go):</strong> Микросервисы: Матчмейкинг (gRPC), Логика комнаты (WebSockets), Статистика (PostgreSQL, Redis).</p>
+                    </div>
+
+                    <div>
+                        <div class="project-stack">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Zenject</span>
+                            <span class="tag">Golang</span>
+                            <span class="tag">gRPC</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline">WebGL Demo</a>
+                            <a href="#" class="btn">GitHub (Client)</a>
+                            <a href="#" class="btn">GitHub (Server)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Пример карточки проекта #2 -->
+             <div class="project-card">
+                <div class="project-visual">
+                    <div class="visual-placeholder">[ <span style="color:var(--accent);">GIF/Видео Геймплея</span> ]</div>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-header">
+                            <h3 class="project-name">CardMaster MMO</h3>
+                            <span class="project-type-icon">{ <span style="color:var(--code-color)">Hybrid</span> }</span>
+                        </div>
+                        <p class="project-description">Коллекционная карточная онлайн-игра с авторизацией.</p>
+                        
+                        <p class="project-spec"><strong>Клиент (Unity):</strong> UI системы, Addressables, сетевое взаимодействие.</p>
+                        <p class="project-spec"><strong>Сервер (Go):</strong> REST API (Gin), JWT авторизация, валидация колод (SQL).</p>
+                    </div>
+
+                    <div>
+                        <div class="project-stack">
+                            <span class="tag">Unity</span>
+                            <span class="tag">Photon</span>
+                            <span class="tag">Golang</span>
+                            <span class="tag">Gin</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline">Demo</a>
+                            <a href="#" class="btn">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ГЛУБОКОЕ ПОГРУЖЕНИЕ (СПЕЦИАЛИЗАЦИИ) -->
+    <section class="deep-dives">
+        <div class="container">
+            <h2 class="section-title"><span>Другие разработки</span></h2>
+            
+            <div class="dive-grid">
+                <!-- Столбец Unity -->
+                <div class="dive-column">
+                    <h3>Unity & Gameplay</h3>
+                    
+                    <div class="dive-card">
+                        <h4>Procedural Dungeon Gen</h4>
+                        <p>Генератор подземелий для рогалика на C#.</p>
+                        <div class="project-stack">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                    </div>
+
+                    <div class="dive-card">
+                        <h4>URP Shader Graph Pack</h4>
+                        <p>Набор шейдеров для воды и стилизованного огня.</p>
+                        <div class="project-stack">
+                            <span class="tag">Unity</span>
+                            <span class="tag">URP</span>
+                            <span class="tag">ShaderGraph</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Столбец Golang -->
+                <div class="dive-column">
+                    <h3>Golang Systems</h3>
+                    
+                    <div class="dive-card">
+                        <h4>High-load API Gateway</h4>
+                        <p>Шлюз с rate-limiting и кэшированием в Redis.</p>
+                        <div class="project-stack">
+                            <span class="tag">Golang</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="dive-card">
+                        <h4>gRPC Chat Server</h4>
+                        <p>Сервер чата с комнатами и goroutines.</p>
+                        <div class="project-stack">
+                            <span class="tag">Golang</span>
+                            <span class="tag">gRPC</span>
+                            <span class="tag">Protobuf</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- МАТРИЦА НАВЫКОВ -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title"><span>Матрица навыков</span></h2>
+            
+            <div class="skills-matrix">
+                
+                <div class="skill-category">
+                    <h3>Game Client (Unity)</h3>
+                    <div class="skill-list">
+                        <div class="skill-item"><div class="skill-dot"></div>C#, Unity 3D/2D, URP</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Zenject / VContainer</div>
+                        <div class="skill-item"><div class="skill-dot"></div>UniTask / Coroutines</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Addressables, Dotween</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Photon / Netcode NGO</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Game Backend (Go)</h3>
+                    <div class="skill-list">
+                        <div class="skill-item"><div class="skill-dot"></div>Golang (Goroutines, Channels)</div>
+                        <div class="skill-item"><div class="skill-dot"></div>gRPC / Protobuf</div>
+                        <div class="skill-item"><div class="skill-dot"></div>WebSockets, Gin / Fiber</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Чистая архитектура</div>
+                        <div class="skill-item"><div class="skill-dot"></div>REST API Design</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Infrastructure</h3>
+                    <div class="skill-list">
+                        <div class="skill-item"><div class="skill-dot"></div>PostgreSQL, SQL</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Redis (Caching/PubSub)</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Docker, Docker Compose</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Git / GitHub Actions</div>
+                        <div class="skill-item"><div class="skill-dot"></div>Linux Basic</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title"><span>Связаться</span></h2>
+            <p class="contact-text">Открыт для предложений о работе над амбициозными сетевыми играми и высоконагруженными сервисами. Напишите мне в удобном мессенджере.</p>
+            
+            <div class="contact-links">
+                <a href="https://t.me/your_username" class="btn contact-btn">@Telegram</a>
+                <a href="https://github.com/your_username" class="btn btn-outline contact-btn">GitHub</a>
+                <a href="mailto:your.email@example.com" class="btn contact-btn">Email</a>
+                <a href="insomnia_collection.json" class="btn btn-outline contact-btn" download>Insomnia Coll.</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Иван Иванов. Создано с помощью Gemini AI / AntiGravity</p>
+        </div>
+    </footer>
+
+</body>
+</html>
