@@ -2,6 +2,8 @@
 
 Одностраничный сайт-портфолио. Построен на **React + Vite + Tailwind CSS**. Весь контент берётся из `portfolio/src/data/data.json`. Готов к деплою на GitHub Pages по адресу [Toha777333.github.io](https://Toha777333.github.io).
 
+📝 **[Как вносить изменения в дизайн и контент → EDITING_GUIDE.md](./EDITING_GUIDE.md)**
+
 ---
 
 ## Стек технологий

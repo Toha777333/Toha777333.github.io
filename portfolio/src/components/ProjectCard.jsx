@@ -1,12 +1,11 @@
 import { Code2, ExternalLink } from 'lucide-react'
 
-// Category labels and colors for project cards
 const CATEGORY_COLORS = [
-  { label: 'SYSTEM / 01', bg: '#3B5BDB' },
-  { label: 'BACKEND / 02', bg: '#1A1A1A' },
+  { label: 'SYSTEM / 01',   bg: '#3B5BDB' },
+  { label: 'BACKEND / 02',  bg: '#1A1A1A' },
   { label: 'GAMEPLAY / 03', bg: '#E8441E' },
   { label: 'PIPELINE / 04', bg: '#12B886' },
-  { label: 'PC GAME / 05', bg: '#7048E8' },
+  { label: 'PC GAME / 05',  bg: '#7048E8' },
   { label: 'DEV TOOL / 06', bg: '#E91E8C' },
 ]
 
@@ -54,7 +53,7 @@ export default function ProjectCard({ project, index }) {
 
         {/* Category badge */}
         <div className="absolute bottom-3 left-3">
-          <span className="inline-block px-2 py-1 bg-black/60 text-white text-[10px] font-semibold tracking-widest uppercase backdrop-blur-sm">
+          <span className="inline-block px-2 py-1 bg-black/60 text-white text-[15px] font-semibold tracking-widest uppercase backdrop-blur-sm">
             [ {category.label} ]
           </span>
         </div>
@@ -62,10 +61,10 @@ export default function ProjectCard({ project, index }) {
 
       {/* Card body */}
       <div className="pt-4 pb-2 flex flex-col flex-1">
-        <h3 className="text-[17px] font-bold leading-tight mb-1.5 group-hover:text-[#2563EB] transition-colors">
+        <h3 className="text-[26px] font-bold leading-tight mb-1.5 group-hover:text-[#2563EB] transition-colors">
           {project.title}
         </h3>
-        <p className="text-[13px] leading-relaxed text-[#1A1A1A]/60 mb-4 flex-1">
+        <p className="text-[20px] leading-relaxed text-[#1A1A1A]/60 mb-4 flex-1">
           {project.description}
         </p>
 
@@ -75,11 +74,11 @@ export default function ProjectCard({ project, index }) {
           <div className="flex items-center gap-1 flex-wrap">
             {project.techStack.map((tech, i) => (
               <span key={tech} className="flex items-center gap-1">
-                <span className="text-[11px] font-semibold tracking-wider text-[#2563EB] uppercase">
+                <span className="text-[17px] font-semibold tracking-wider text-[#2563EB] uppercase">
                   {tech}
                 </span>
                 {i < project.techStack.length - 1 && (
-                  <span className="text-[#1A1A1A]/30 text-[11px]">·</span>
+                  <span className="text-[#1A1A1A]/30 text-[17px]">·</span>
                 )}
               </span>
             ))}
@@ -95,7 +94,7 @@ export default function ProjectCard({ project, index }) {
                 className="text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors"
                 aria-label="Source code"
               >
-                <Code2 size={15} />
+                <Code2 size={22} />
               </a>
             )}
             {project.links?.liveDemo && (
@@ -106,7 +105,7 @@ export default function ProjectCard({ project, index }) {
                 className="text-[#1A1A1A]/40 hover:text-[#2563EB] transition-colors"
                 aria-label="Live demo"
               >
-                <ExternalLink size={15} />
+                <ExternalLink size={22} />
               </a>
             )}
           </div>
