@@ -1,0 +1,100 @@
+{
+  "personalInfo": {
+    "name": "Антон Барсуков",
+    "headline": "Разрабатываю игры с 2018 года",
+    "subHeadline": "Технический лидер и Unity-разработчик. Специализируюсь на сложных технических решениях и автоматизации процессов.",
+    "email": "a.barsukov_00@mail.ru",
+    "telegram": "https://t.me/toha777333",
+    "github": "https://github.com/Toha777333",
+    "googlePlay": "https://play.google.com/store/apps/developer?id=MuteMoon"
+  },
+  "achievements": [
+    {
+      "id": 1,
+      "metric": "Почти 7 лет",
+      "description": "коммерческого опыта разработки"
+    },
+    {
+      "id": 2,
+      "metric": "3 000 000+",
+      "description": "скачиваний у главного хита в Google Play"
+    },
+    {
+      "id": 3,
+      "metric": "40+ и 4",
+      "description": "выпущенных гиперказуальных проектов и РС-игр"
+    },
+    {
+      "id": 4,
+      "metric": "на 1000-2000%",
+      "description": "ускорены процессы создания анимаций"
+    }
+  ],
+  "featuredProjects": [
+    {
+      "id": "badwingz",
+      "title": "BadWingz",
+      "description": "Мобильный проект. Полный цикл разработки, оптимизация производительности и интеграция аналитики.",
+      "techStack": ["Unity", "C#", "Android SDK"],
+      "media": {
+        "type": "image", 
+        "url": "/assets/projects/badwingz.jpg" 
+      },
+      "links": {
+        "sourceCode": null,
+        "liveDemo": "https://play.google.com/store/apps/details?id=com.kwest.badwingz"
+      }
+    },
+    {
+      "id": "kickmaster3d",
+      "title": "KickMaster3D",
+      "description": "Успешная мобильная игра с интеграцией рекламных SDK и сложной игровой логикой.",
+      "techStack": ["Unity", "Zenject", "C#"],
+      "media": {
+        "type": "video",
+        "url": "/assets/projects/kickmaster3d.mp4"
+      },
+      "links": {
+        "sourceCode": null,
+        "liveDemo": "https://play.google.com/store/apps/details?id=com.Room40Games.KickMaster3D"
+      }
+    },
+    {
+      "id": "golang-service",
+      "title": "Название вашего Go-проекта",
+      "description": "Здесь будет описание вашего бэкенд сервиса или утилиты.",
+      "techStack": ["Golang", "REST API", "Docker"],
+      "media": {
+        "type": "image",
+        "url": "/assets/projects/golang-placeholder.png"
+      },
+      "links": {
+        "sourceCode": null,
+        "liveDemo": null
+      }
+    }
+  ],
+  "archiveProjects": [
+    {
+      "id": "archive-1",
+      "year": "2024",
+      "title": "Утилита для трекинга рабочих показателей команды",
+      "techStack": ["Golang", "REST API"],
+      "link": null
+    },
+    {
+      "id": "archive-2",
+      "year": "2023",
+      "title": "Внутренний инструмент для настройки анимаций",
+      "techStack": ["Unity", "Editor Scripting"],
+      "link": null
+    },
+    {
+      "id": "archive-3",
+      "year": "2021",
+      "title": "Название гиперказуальной игры",
+      "techStack": ["Unity", "AppsFlyer", "Facebook SDK"],
+      "link": "https://play.google.com/..."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+# Зависимости Node.js (устанавливаются через npm install)
+portfolio/node_modules/
+
+# Папка сборки (генерируется через npm run build)
+# GitHub Actions сам собирает и деплоит её в gh-pages
+portfolio/dist/
+
+# Логи
+*.log
+npm-debug.log*
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Локальные настройки редакторов
+.vscode/
+.idea/
+*.suo
+*.sw?
