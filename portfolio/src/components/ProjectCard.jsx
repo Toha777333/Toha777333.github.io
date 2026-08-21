@@ -1,16 +1,9 @@
-import { Code2, ExternalLink } from 'lucide-react'
+import { Code2, ExternalLink, Gamepad2 } from 'lucide-react'
 
-const CATEGORY_COLORS = [
-  { label: 'SYSTEM / 01',   bg: '#3B5BDB' },
-  { label: 'BACKEND / 02',  bg: '#1A1A1A' },
-  { label: 'GAMEPLAY / 03', bg: '#E8441E' },
-  { label: 'PIPELINE / 04', bg: '#12B886' },
-  { label: 'PC GAME / 05',  bg: '#7048E8' },
-  { label: 'DEV TOOL / 06', bg: '#E91E8C' },
-]
+const CATEGORY_COLORS = '#E8441E'
 
 function ProjectMedia({ media, title }) {
-  const baseClass = 'w-full h-full object-cover'
+  const baseClass = 'absolute inset-0 w-full h-full object-cover'
 
   if (media?.type === 'video') {
     return (
@@ -40,23 +33,15 @@ function ProjectMedia({ media, title }) {
 }
 
 export default function ProjectCard({ project, index }) {
-  const category = CATEGORY_COLORS[index % CATEGORY_COLORS.length]
 
   return (
     <article className="flex flex-col group">
       {/* Media area */}
       <div
         className="relative w-full overflow-hidden"
-        style={{ aspectRatio: '16/9', backgroundColor: category.bg }}
+        style={{ aspectRatio: '16/9', backgroundColor: CATEGORY_COLORS }}
       >
         <ProjectMedia media={project.media} title={project.title} />
-
-        {/* Category badge */}
-        <div className="absolute bottom-3 left-3">
-          <span className="inline-block px-2 py-1 bg-black/60 text-white text-[15px] font-semibold tracking-widest uppercase backdrop-blur-sm">
-            [ {category.label} ]
-          </span>
-        </div>
       </div>
 
       {/* Card body */}
@@ -105,7 +90,7 @@ export default function ProjectCard({ project, index }) {
                 className="text-[#1A1A1A]/40 hover:text-[#2563EB] transition-colors"
                 aria-label="Live demo"
               >
-                <ExternalLink size={22} />
+                <Gamepad2 size={22} />
               </a>
             )}
           </div>

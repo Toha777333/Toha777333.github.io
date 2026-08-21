@@ -28,10 +28,7 @@ export default function Achievements({ achievements }) {
       {/* Section header */}
       <div className="flex items-start justify-between mb-6">
         <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-          01 / Key Achievements
-        </p>
-        <p className="text-[17px] text-[#1A1A1A]/40 text-right hidden sm:block">
-          Selected impact, measured.
+          01 / Достижения
         </p>
       </div>
 

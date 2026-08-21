@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 export default function Footer({ info }) {
   return (
     <footer
+      id="footer"
       className="mt-8"
       style={{ backgroundColor: 'var(--color-footer)' }}
     >

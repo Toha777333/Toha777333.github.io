@@ -6,10 +6,7 @@ export default function FeaturedProjects({ projects }) {
       {/* Section header */}
       <div className="flex items-start justify-between mb-8">
         <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-          02 / Featured Work
-        </p>
-        <p className="text-[17px] text-[#1A1A1A]/40 text-right hidden sm:block">
-          Selected systems, tools, and shipped games.
+          02 / Избранные проекты
         </p>
       </div>
 
