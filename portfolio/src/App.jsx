@@ -1,7 +1,7 @@
 import Hero from './components/Hero'
 import Achievements from './components/Achievements'
 import FeaturedProjects from './components/FeaturedProjects'
-import ArchiveProjects from './components/ArchiveProjects'
+import ProjectArchiveGrid from './components/ProjectArchiveGrid'
 import Footer from './components/Footer'
 import data from './data/data.json'
 
@@ -11,7 +11,7 @@ function App() {
       <Hero info={data.personalInfo} />
       <Achievements achievements={data.achievements} />
       <FeaturedProjects projects={data.featuredProjects} />
-      <ArchiveProjects projects={data.archiveProjects} />
+      <ProjectArchiveGrid projects={data.archiveProjects} />
       <Footer info={data.personalInfo} />
     </main>
   )
