@@ -12,9 +12,9 @@ function App() {
       <Hero info={data.personalInfo} />
       <Achievements achievements={data.achievements} />
       <FeaturedProjects projects={data.featuredProjects} />
-      <ProjectArchiveGrid projects={data.archiveProjects} />
+      {/* <ProjectArchiveGrid projects={data.archiveProjects} /> */}
       <ProjectArchiveHex />
-      <Footer info={data.personalInfo} />
+      <Footer footerData={data.footerData} />
     </main>
   )
 }

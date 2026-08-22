@@ -136,5 +136,29 @@
       ],
       "link": "https://play.google.com/..."
     }
-  ]
+  ],
+  "footerData": {
+    "contacts": [
+      {
+        "name": "Telegram",
+        "url": "https://t.me/toha777333"
+      },
+      {
+        "name": "a.barsukov_00@mail.ru",
+        "url": "mailto:a.barsukov_00@mail.ru"
+      }
+    ],
+    "codeLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/Toha777333"
+      }
+    ],
+    "gamePlatforms": [
+      {
+        "name": "Google Play",
+        "url": "https://play.google.com/store/apps/developer?id=MuteMoon"
+      }
+    ]
+  }
 }
