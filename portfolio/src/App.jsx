@@ -2,6 +2,7 @@ import Hero from './components/Hero'
 import Achievements from './components/Achievements'
 import FeaturedProjects from './components/FeaturedProjects'
 import ProjectArchiveGrid from './components/ProjectArchiveGrid'
+import ProjectArchiveHex from './components/ProjectArchiveHex'
 import Footer from './components/Footer'
 import data from './data/data.json'
 
@@ -12,6 +13,7 @@ function App() {
       <Achievements achievements={data.achievements} />
       <FeaturedProjects projects={data.featuredProjects} />
       <ProjectArchiveGrid projects={data.archiveProjects} />
+      <ProjectArchiveHex />
       <Footer info={data.personalInfo} />
     </main>
   )

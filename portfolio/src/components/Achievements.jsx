@@ -33,7 +33,7 @@ export default function Achievements({ achievements }) {
       </div>
 
       {/* Grid 2×2 */}
-      <div className="grid grid-cols-2 gap-px bg-[#D4D0CB]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#D4D0CB]">
         {achievements.map((item, i) => (
           <AchievementCard
             key={item.id}
