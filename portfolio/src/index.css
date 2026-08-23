@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #F5F2EE;
-  --color-text: #1A1A1A;
-  --color-accent: #2563EB;
-  --color-footer: #111111;
+  --color-bg: #0e1017;
+  --color-text: #ffffff;
+  --color-accent: #66d9ed;
+  --color-footer: #08090d;
 }
 
 html {
-  font-size: 24px;
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
@@ -24,22 +24,40 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-accent);
-  color: #fff;
+  background-color: #66d9ed;
+  color: #0e1017;
 }
 
-/* Анимация появления архивного модала / bottom sheet */
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e1017;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #24283b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #66d9ed;
+}
+
+/* Анимация появления архивного модала */
 @keyframes archiveModalEnter {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(24px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .archive-modal-enter {
-  animation: archiveModalEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: archiveModalEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

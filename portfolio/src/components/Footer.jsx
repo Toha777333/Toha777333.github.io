@@ -28,13 +28,13 @@ function FooterLink({ item }) {
       onClick={isMailto ? handleClick : undefined}
       target={isMailto ? undefined : '_blank'}
       rel={isMailto ? undefined : 'noopener noreferrer'}
-      className="inline-flex items-center gap-1.5 text-white text-[16px] font-medium transition-colors duration-200 hover:text-white/70 hover:underline cursor-pointer"
+      className="inline-flex items-center gap-1.5 text-[#94a3b8] text-[15px] font-normal transition-colors duration-200 hover:text-[#66d9ed] cursor-pointer"
       title={isMailto ? 'Нажмите, чтобы скопировать email' : undefined}
     >
       {copied ? (
         <>
-          <span className="text-[#22c55e]">Скопировано!</span>
-          <Check size={16} className="text-[#22c55e]" />
+          <span className="text-[#66d9ed] font-medium">Скопировано!</span>
+          <Check size={16} className="text-[#66d9ed]" />
         </>
       ) : (
         item.name
@@ -49,17 +49,17 @@ export default function Footer({ footerData = data.footerData, resumeUrl = data.
   return (
     <footer
       id="footer"
-      className="mt-12"
+      className="border-t border-white/[0.08]"
       style={{ backgroundColor: 'var(--color-footer)' }}
     >
-      <div className="max-w-[1140px] mx-auto px-6 md:px-8 py-14 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+      <div className="max-w-[1140px] mx-auto px-6 md:px-8 py-16 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* 1. Контакты */}
           <div className="flex flex-col">
-            <h3 className="text-[13px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
-              Contacts
+            <h3 className="font-mono text-[13px] font-semibold tracking-wider uppercase text-[#66d9ed] mb-4">
+              // Contacts
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {contacts.map((item, index) => (
                 <li key={index}>
                   <FooterLink item={item} />
@@ -70,10 +70,10 @@ export default function Footer({ footerData = data.footerData, resumeUrl = data.
 
           {/* 2. Код */}
           <div className="flex flex-col">
-            <h3 className="text-[13px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
-              Code
+            <h3 className="font-mono text-[13px] font-semibold tracking-wider uppercase text-[#66d9ed] mb-4">
+              // Code
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {codeLinks.map((item, index) => (
                 <li key={index}>
                   <FooterLink item={item} />
@@ -84,10 +84,10 @@ export default function Footer({ footerData = data.footerData, resumeUrl = data.
 
           {/* 3. Игры */}
           <div className="flex flex-col">
-            <h3 className="text-[13px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
-              Games
+            <h3 className="font-mono text-[13px] font-semibold tracking-wider uppercase text-[#66d9ed] mb-4">
+              // Games
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {gamePlatforms.map((item, index) => (
                 <li key={index}>
                   <FooterLink item={item} />
@@ -98,13 +98,13 @@ export default function Footer({ footerData = data.footerData, resumeUrl = data.
 
           {/* 4. Кнопка Скачать резюме */}
           <div className="flex flex-col sm:items-start">
-            <h3 className="text-[13px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
-              Resume
+            <h3 className="font-mono text-[13px] font-semibold tracking-wider uppercase text-[#66d9ed] mb-4">
+              // Resume
             </h3>
             <a
-              href={encodeURI(resumeUrl)}
-              download
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-white/30 text-white hover:border-white hover:bg-white hover:text-[#1A1A1A] transition-all duration-200 rounded-sm font-semibold text-[15px] tracking-wide w-full sm:w-auto"
+              href={encodeURI(resumeUrl || './assets/CV Barsukov Anton.pdf')}
+              download="CV Barsukov Anton.pdf"
+              className="inline-flex items-center justify-center gap-2.5 px-5 py-3 border border-[#66d9ed]/40 text-[#66d9ed] bg-[#66d9ed]/10 hover:bg-[#66d9ed] hover:text-[#0e1017] hover:shadow-[0_0_20px_rgba(102,217,237,0.35)] transition-all duration-200 rounded-xl font-semibold text-[15px] tracking-wide w-full sm:w-auto"
             >
               <span>Download Resume</span>
               <ArrowDownToLine size={18} />

@@ -2,7 +2,7 @@
   "personalInfo": {
     "name": "Антон Барсуков • Технический лидер • Unity & Golang разработчик",
     "headline": "Разрабатываю игры с 2019 года",
-    "subHeadline": "Технический лидер и Unity-разработчик. Специализируюсь на сложных технических решениях и автоматизации процессов.",
+    "subHeadline": "",
     "email": "a.barsukov_00@mail.ru",
     "telegram": "https://t.me/toha777333",
     "github": "https://github.com/Toha777333",
@@ -79,7 +79,7 @@
       ],
       "media": {
         "type": "image",
-        "url": "/assets/projects/go.jpg"
+        "url": "/assets/projects/go_project.webp"
       },
       "links": {
         "sourceCode": "https://github.com/Toha777333/adv-demo",

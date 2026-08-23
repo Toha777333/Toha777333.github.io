@@ -2,50 +2,48 @@ import { ArrowUpRight } from 'lucide-react'
 
 export function ArchiveRow({ project }) {
   return (
-    <tr className="border-b border-[#D4D0CB]/60 group hover:bg-[#1A1A1A]/[0.02] transition-colors">
+    <tr className="border-b border-white/[0.06] group hover:bg-white/[0.02] transition-colors">
       {/* Year */}
-      <td className="py-3.5 pr-6 align-top w-20 flex-shrink-0">
-        <span className="text-[18px] font-bold text-[#2563EB]">{project.year}</span>
+      <td className="py-4 pr-6 align-top w-20 flex-shrink-0">
+        <span className="font-mono text-[16px] font-bold text-[#66d9ed]">{project.year}</span>
       </td>
 
       {/* Project title */}
-      <td className="py-3.5 pr-4 align-top">
-        <span className="text-[20px] font-semibold text-[#1A1A1A] leading-snug">
+      <td className="py-4 pr-4 align-top">
+        <span className="text-[18px] font-semibold text-white group-hover:text-[#66d9ed] transition-colors leading-snug">
           {project.title}
         </span>
       </td>
 
       {/* Tech stack */}
-      <td className="py-3.5 pr-4 align-top hidden sm:table-cell">
-        <div className="flex flex-wrap gap-x-1.5 gap-y-0.5">
-          {project.techStack.map((tech, i) => (
-            <span key={tech} className="flex items-center gap-1">
-              <span className="text-[17px] font-semibold uppercase tracking-wide text-[#1A1A1A]/50">
-                {tech}
-              </span>
-              {i < project.techStack.length - 1 && (
-                <span className="text-[#1A1A1A]/30 text-[17px]">·</span>
-              )}
+      <td className="py-4 pr-4 align-top hidden sm:table-cell">
+        <div className="flex flex-wrap gap-1.5">
+          {project.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="font-mono text-[11px] font-medium bg-[#66d9ed]/10 text-[#66d9ed] border border-[#66d9ed]/20 px-2 py-0.5 rounded uppercase tracking-wider"
+            >
+              {tech}
             </span>
           ))}
         </div>
       </td>
 
       {/* Link */}
-      <td className="py-3.5 align-top w-8 text-right">
+      <td className="py-4 align-top w-8 text-right">
         {project.link ? (
           <a
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex text-[#1A1A1A]/30 hover:text-[#2563EB] transition-colors"
-            aria-label={`Open ${project.title}`}
+            className="inline-flex text-white/40 hover:text-[#66d9ed] transition-colors p-1"
+            aria-label={`Открыть ${project.title}`}
           >
-            <ArrowUpRight size={22} />
+            <ArrowUpRight size={20} />
           </a>
         ) : (
-          <span className="text-[#1A1A1A]/15">
-            <ArrowUpRight size={22} />
+          <span className="text-white/10 p-1 inline-flex">
+            <ArrowUpRight size={20} />
           </span>
         )}
       </td>
@@ -57,31 +55,31 @@ export default function ArchiveProjects({ projects }) {
   return (
     <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-24 md:pb-32">
       {/* Section header */}
-      <div className="flex items-start justify-between mb-6">
-        <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-          03 / Project Archive
+      <div className="flex items-center justify-between mb-8">
+        <p className="font-mono text-[14px] sm:text-[15px] font-semibold tracking-widest uppercase text-[#66d9ed]">
+          // 03 / Архив проектов
         </p>
-        <p className="text-[17px] text-[#1A1A1A]/40 text-right hidden sm:block">
-          Selected releases &amp; experiments / 2018—2025
+        <p className="font-mono text-[13px] text-white/40 text-right hidden sm:block">
+          2018 — 2025
         </p>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto -mx-1">
+      <div className="overflow-x-auto bg-[#161822] border border-white/[0.08] rounded-2xl p-6">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="border-b border-[#D4D0CB]">
-              <th className="pb-2.5 text-left text-[15px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40 pr-6">
-                Year
+            <tr className="border-b border-white/10">
+              <th className="pb-3 text-left font-mono text-[12px] font-semibold tracking-widest uppercase text-[#66d9ed] pr-6">
+                Год
               </th>
-              <th className="pb-2.5 text-left text-[15px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40 pr-4">
-                Project
+              <th className="pb-3 text-left font-mono text-[12px] font-semibold tracking-widest uppercase text-[#66d9ed] pr-4">
+                Проект
               </th>
-              <th className="pb-2.5 text-left text-[15px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40 pr-4 hidden sm:table-cell">
-                Stack
+              <th className="pb-3 text-left font-mono text-[12px] font-semibold tracking-widest uppercase text-[#66d9ed] pr-4 hidden sm:table-cell">
+                Стек
               </th>
-              <th className="pb-2.5 text-right text-[15px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-                Link
+              <th className="pb-3 text-right font-mono text-[12px] font-semibold tracking-widest uppercase text-[#66d9ed]">
+                Ссылка
               </th>
             </tr>
           </thead>

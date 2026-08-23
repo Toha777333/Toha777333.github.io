@@ -1,9 +1,7 @@
 import { Code2, ExternalLink, Gamepad2 } from 'lucide-react'
 
-const CATEGORY_COLORS = '#E8441E'
-
 function ProjectMedia({ media, title }) {
-  const baseClass = 'absolute inset-0 w-full h-full object-cover'
+  const baseClass = 'absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
 
   if (media?.type === 'video') {
     return (
@@ -32,54 +30,49 @@ function ProjectMedia({ media, title }) {
   return null
 }
 
-export default function ProjectCard({ project, index }) {
-
+export default function ProjectCard({ project }) {
   return (
-    <article className="flex flex-col group">
+    <article className="group flex flex-col bg-[#161822] border border-white/[0.08] hover:border-[#66d9ed]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[#66d9ed]/5">
       {/* Media area */}
-      <div
-        className="relative w-full overflow-hidden"
-        style={{ aspectRatio: '16/9', backgroundColor: CATEGORY_COLORS }}
-      >
+      <div className="relative w-full aspect-video overflow-hidden bg-[#0a0b10]">
         <ProjectMedia media={project.media} title={project.title} />
       </div>
 
       {/* Card body */}
-      <div className="pt-4 pb-2 flex flex-col flex-1">
-        <h3 className="text-[26px] font-bold leading-tight mb-1.5 group-hover:text-[#2563EB] transition-colors">
+      <div className="p-6 sm:p-7 flex flex-col flex-1">
+        <h3 className="text-[22px] sm:text-[24px] font-bold text-white group-hover:text-[#66d9ed] transition-colors leading-snug mb-2.5">
           {project.title}
         </h3>
-        <p className="text-[20px] leading-relaxed text-[#1A1A1A]/60 mb-4 flex-1">
+        <p className="text-[15px] sm:text-[16px] leading-relaxed text-[#94a3b8] mb-6 flex-1">
           {project.description}
         </p>
 
         {/* Footer row: tech stack + links */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pt-4 border-t border-white/[0.06] mt-auto">
           {/* Tech stack */}
-          <div className="flex items-center gap-1 flex-wrap">
-            {project.techStack.map((tech, i) => (
-              <span key={tech} className="flex items-center gap-1">
-                <span className="text-[17px] font-semibold tracking-wider text-[#2563EB] uppercase">
-                  {tech}
-                </span>
-                {i < project.techStack.length - 1 && (
-                  <span className="text-[#1A1A1A]/30 text-[17px]">·</span>
-                )}
+          <div className="flex items-center gap-2 flex-wrap">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="font-mono text-[12px] font-medium bg-[#66d9ed]/10 text-[#66d9ed] border border-[#66d9ed]/20 px-2.5 py-1 rounded-md tracking-wider uppercase"
+              >
+                {tech}
               </span>
             ))}
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-3 ml-3 flex-shrink-0">
+          <div className="flex items-center gap-2 ml-3 flex-shrink-0">
             {project.links?.sourceCode && (
               <a
                 href={project.links.sourceCode}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors"
-                aria-label="Source code"
+                className="p-2 rounded-lg bg-white/[0.04] border border-white/10 text-white/60 hover:text-[#66d9ed] hover:border-[#66d9ed]/40 hover:bg-[#66d9ed]/10 transition-all duration-200"
+                aria-label="Исходный код на GitHub"
+                title="Исходный код"
               >
-                <Code2 size={22} />
+                <Code2 size={19} />
               </a>
             )}
             {project.links?.liveDemo && (
@@ -87,10 +80,11 @@ export default function ProjectCard({ project, index }) {
                 href={project.links.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#1A1A1A]/40 hover:text-[#2563EB] transition-colors"
-                aria-label="Live demo"
+                className="p-2 rounded-lg bg-white/[0.04] border border-white/10 text-white/60 hover:text-[#66d9ed] hover:border-[#66d9ed]/40 hover:bg-[#66d9ed]/10 transition-all duration-200"
+                aria-label="Открыть игру"
+                title="Перейти к игре"
               >
-                <Gamepad2 size={22} />
+                <Gamepad2 size={19} />
               </a>
             )}
           </div>

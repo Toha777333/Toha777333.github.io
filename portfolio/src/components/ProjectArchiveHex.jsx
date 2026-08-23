@@ -50,7 +50,6 @@ export default function ProjectArchiveHex() {
   )
 
   useEffect(() => {
-
     const checkWidth = () => {
       setIsMobile(window.innerWidth < MD_BREAKPOINT)
     }
@@ -61,7 +60,7 @@ export default function ProjectArchiveHex() {
   }, [])
 
   // ── Группировка по рядам ──────────────────────────────────────────────
-  // Мобильные: 3 / 4 / 3 / 4 ...
+  // Мобильные: 4 / 5 / 4 / 5 ...
   // Десктоп:  5 / 6 / 5 / 6 ...
   const rows = useMemo(() => {
     if (!IMAGES.length) return []
@@ -73,15 +72,15 @@ export default function ProjectArchiveHex() {
   // ── Пустое состояние ──────────────────────────────────────────────────
   if (!IMAGES.length) {
     return (
-      <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-16">
-        <div className="flex items-start justify-between mb-6">
-          <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-            03 / Галерея работ
+      <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-20">
+        <div className="flex items-center gap-3 mb-6">
+          <p className="font-mono text-[14px] sm:text-[15px] font-semibold tracking-widest uppercase text-[#66d9ed]">
+            // 03 / Галерея работ
           </p>
         </div>
-        <p className="text-[14px] text-[#1A1A1A]/30 italic">
+        <p className="text-[15px] text-[#94a3b8] italic">
           Добавь скриншоты или арты в{' '}
-          <code className="bg-[#1A1A1A]/5 px-1.5 py-0.5 rounded text-[13px] not-italic">
+          <code className="bg-[#161822] text-[#66d9ed] border border-white/10 px-2 py-0.5 rounded font-mono text-[13px] not-italic">
             src/assets/archive/
           </code>{' '}
           — они появятся здесь автоматически.
@@ -92,11 +91,11 @@ export default function ProjectArchiveHex() {
 
   // ── Сетка сот ─────────────────────────────────────────────────────────
   return (
-    <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-20">
+    <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-24 md:pb-32">
       {/* Section header */}
-      <div className="flex items-start justify-between mb-8">
-        <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
-          03 / Галерея работ
+      <div className="flex items-center gap-3 mb-10">
+        <p className="font-mono text-[14px] sm:text-[15px] font-semibold tracking-widest uppercase text-[#66d9ed]">
+          // 03 / Галерея работ
         </p>
       </div>
 
@@ -105,8 +104,9 @@ export default function ProjectArchiveHex() {
         {rows.map((row, rowIdx) => (
           <div
             key={rowIdx}
-            className={`flex justify-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2 ${rowIdx > 0 ? '-mt-3 sm:-mt-3.5 md:-mt-4 lg:-mt-6' : ''
-              }`}
+            className={`flex justify-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2 ${
+              rowIdx > 0 ? '-mt-3 sm:-mt-3.5 md:-mt-4 lg:-mt-6' : ''
+            }`}
           >
             {row.map((src, colIdx) => {
               if (!src) {
@@ -127,18 +127,11 @@ export default function ProjectArchiveHex() {
                     hover:scale-110 hover:z-20
                   "
                   style={{
-                    filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.18))',
+                    filter: 'drop-shadow(0 6px 16px rgba(0,0,0,0.5))',
                   }}
                 >
-                  {/* 
-                    Идеальные математические пропорции правильного шестиугольника (h ≈ w * 1.1547):
-                    - mobile (<sm):  70px x 80px (не вытянут, правильный гексагон)
-                    - sm:            84px x 97px
-                    - md:            110px x 127px
-                    - lg:            124px x 143px
-                  */}
                   <div
-                    className="w-[70px] h-[80px] sm:w-[100px] sm:h-[112px] md:w-[110px] md:h-[127px] lg:w-[164px] lg:h-[180px] overflow-hidden"
+                    className="w-[70px] h-[80px] sm:w-[100px] sm:h-[112px] md:w-[110px] md:h-[127px] lg:w-[164px] lg:h-[180px] overflow-hidden transition-all duration-300 group-hover:brightness-125"
                     style={{ clipPath: HEX_CLIP }}
                   >
                     <img
@@ -146,7 +139,7 @@ export default function ProjectArchiveHex() {
                       alt=""
                       loading="lazy"
                       draggable={false}
-                      className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-125 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
