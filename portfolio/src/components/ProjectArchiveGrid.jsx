@@ -45,7 +45,7 @@ export default function ProjectArchiveGrid({ projects }) {
   }, [selected])
 
   return (
-    <section className="max-w-[1020px] mx-auto px-6 pb-16">
+    <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-16">
       {/* Заголовок секции */}
       <div className="flex items-center gap-3 mb-6">
         <span className="text-[13px] font-semibold tracking-[0.2em] uppercase text-[#1A1A1A]/40">

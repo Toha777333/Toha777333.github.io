@@ -14,7 +14,7 @@ function App() {
       <FeaturedProjects projects={data.featuredProjects} />
       {/* <ProjectArchiveGrid projects={data.archiveProjects} /> */}
       <ProjectArchiveHex />
-      <Footer footerData={data.footerData} />
+      <Footer footerData={data.footerData} resumeUrl={data.personalInfo.resume} />
     </main>
   )
 }

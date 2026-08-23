@@ -43,7 +43,7 @@ function FooterLink({ item }) {
   )
 }
 
-export default function Footer({ footerData = data.footerData }) {
+export default function Footer({ footerData = data.footerData, resumeUrl = data.personalInfo?.resume }) {
   const { contacts = [], codeLinks = [], gamePlatforms = [] } = footerData || {}
 
   return (
@@ -52,7 +52,7 @@ export default function Footer({ footerData = data.footerData }) {
       className="mt-12"
       style={{ backgroundColor: 'var(--color-footer)' }}
     >
-      <div className="max-w-[1020px] mx-auto px-6 py-14 md:py-16">
+      <div className="max-w-[1140px] mx-auto px-6 md:px-8 py-14 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           {/* 1. Контакты */}
           <div className="flex flex-col">
@@ -102,7 +102,7 @@ export default function Footer({ footerData = data.footerData }) {
               Resume
             </h3>
             <a
-              href="./assets/resume.pdf"
+              href={encodeURI(resumeUrl)}
               download
               className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-white/30 text-white hover:border-white hover:bg-white hover:text-[#1A1A1A] transition-all duration-200 rounded-sm font-semibold text-[15px] tracking-wide w-full sm:w-auto"
             >

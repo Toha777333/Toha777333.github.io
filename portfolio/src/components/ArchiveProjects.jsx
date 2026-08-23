@@ -55,7 +55,7 @@ export function ArchiveRow({ project }) {
 
 export default function ArchiveProjects({ projects }) {
   return (
-    <section className="max-w-[1020px] mx-auto px-6 pb-24 md:pb-32">
+    <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-24 md:pb-32">
       {/* Section header */}
       <div className="flex items-start justify-between mb-6">
         <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">

@@ -4,7 +4,7 @@ import bgImage from '../assets/header_bg.webp'
 export default function Hero({ info }) {
   return (
     <section className="min-h-screen relative flex flex-col w-full">
-      
+
       {/* Фоновое изображение и затемнение */}
       <div className="absolute inset-0 z-0">
         <img
@@ -19,7 +19,7 @@ export default function Hero({ info }) {
       <div className="relative z-10 flex-1 flex flex-col w-full">
         {/* Breadcrumb — прибит к верху с отступом 24px */}
         <div className="absolute top-6 left-0 right-0">
-          <div className="max-w-[1020px] mx-auto w-full px-6">
+          <div className="max-w-[1140px] mx-auto w-full px-6 md:px-8">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#2563EB] inline-block flex-shrink-0"></span>
               <p className="text-[17px] font-semibold tracking-widest uppercase text-white/60">
@@ -31,7 +31,7 @@ export default function Hero({ info }) {
 
         {/* Центральный блок — headline + кнопки */}
         <div className="flex-1 flex flex-col justify-center">
-          <div className="max-w-[1020px] mx-auto w-full px-6 py-24">
+          <div className="max-w-[1140px] mx-auto w-full px-6 md:px-8 py-24">
 
             {/* Main headline */}
             <h1
@@ -44,7 +44,7 @@ export default function Hero({ info }) {
             {/* CTA Buttons */}
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
               <a
-                href="./assets/resume.pdf"
+                href={encodeURI(info.resume)}
                 download
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-[#1A1A1A] text-[20px] font-semibold tracking-wide rounded-sm hover:bg-gray-200 transition-colors duration-200"
               >

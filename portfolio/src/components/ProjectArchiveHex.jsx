@@ -73,11 +73,11 @@ export default function ProjectArchiveHex() {
   // ── Пустое состояние ──────────────────────────────────────────────────
   if (!IMAGES.length) {
     return (
-      <section className="max-w-[1140px] mx-auto px-4 sm:px-6 pb-16">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-[13px] font-semibold tracking-[0.2em] uppercase text-[#1A1A1A]/40">
-            Галерея работ
-          </span>
+      <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-16">
+        <div className="flex items-start justify-between mb-6">
+          <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
+            03 / Галерея работ
+          </p>
         </div>
         <p className="text-[14px] text-[#1A1A1A]/30 italic">
           Добавь скриншоты или арты в{' '}
@@ -92,15 +92,12 @@ export default function ProjectArchiveHex() {
 
   // ── Сетка сот ─────────────────────────────────────────────────────────
   return (
-    <section className="max-w-[1140px] mx-auto px-4 sm:px-6 pb-20">
-      {/* Заголовок */}
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-[13px] font-semibold tracking-[0.2em] uppercase text-[#1A1A1A]/40">
-          Галерея работ
-        </span>
-        <span className="text-[13px] text-[#1A1A1A]/20 font-medium">
-          {IMAGES.length}
-        </span>
+    <section className="max-w-[1140px] mx-auto px-6 md:px-8 pb-20">
+      {/* Section header */}
+      <div className="flex items-start justify-between mb-8">
+        <p className="text-[17px] font-semibold tracking-widest uppercase text-[#1A1A1A]/40">
+          03 / Галерея работ
+        </p>
       </div>
 
       {/* Соты */}
