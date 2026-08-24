@@ -60,7 +60,7 @@ export default function ArchiveProjects({ projects }) {
           // 03 / Архив проектов
         </p>
         <p className="font-mono text-[13px] text-white/40 text-right hidden sm:block">
-          2018 — 2025
+          2019 — 2025
         </p>
       </div>
 

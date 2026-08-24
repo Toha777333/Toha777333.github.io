@@ -30,7 +30,7 @@ npm run dev
 ```json
 "personalInfo": {
   "name": "Антон Барсуков",          ← имя в шапке
-  "headline": "Разрабатываю игры с 2018 года",  ← главный заголовок Hero
+  "headline": "Разрабатываю игры с 2019 года",  ← главный заголовок Hero
   "subHeadline": "Технический лидер...",         ← подзаголовок Hero
   "email": "a.barsukov_00@mail.ru",
   "telegram": "https://t.me/toha777333",
